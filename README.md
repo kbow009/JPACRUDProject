@@ -12,7 +12,7 @@ This is an app to look up information about dogs. If you click on the breed name
 *// will update mapping and fill out JSP to create full application
 # How to Access
 
-* http://18.190.121.24:8080/Doggydogs/
+* http://18.190.121.24:8080/DoggyDogs/
 # Technologies Used
 
 * RequestMapping
