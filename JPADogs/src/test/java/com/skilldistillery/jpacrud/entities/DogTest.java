@@ -43,7 +43,7 @@ class DogTest {
 	@Test
 	void test_Dog_entity_mapping() {
 		assertNotNull(dog);
-		assertEquals("Basenji", dog.getBreed());
+		assertEquals("Akita", dog.getBreed());
 	}
 
 }

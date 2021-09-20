@@ -9,8 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpacrud.entities.Dog;
-@Service
 @Transactional
+@Service
 public class DogDaoImpl implements DogDAO {
 	@PersistenceContext
 	private EntityManager em;
@@ -24,8 +24,55 @@ public class DogDaoImpl implements DogDAO {
 
 	@Override
 	public Dog findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Dog.class, id);
 	}
+
+	@Override
+	public Dog addDog(Dog dog) {
+		
+		em.getTransaction().begin();
+		em.persist(dog);
+		em.flush();
+		em.getTransaction().commit();
+		
+		
+		return dog;
+	}
+
+	@Override
+	public Dog updateDog(int id, Dog dog) {
+		Dog dbdog = em.find(Dog.class, id);
+		em.getTransaction().begin();
+		dbdog.setBreed(dog.getBreed());
+		dbdog.setBreedGroup(dog.getBreedGroup());
+		dbdog.setHeight(dog.getHeight());
+		dbdog.setWeight(dog.getWeight());
+		dbdog.setAvgLifeSpan(dog.getAvgLifeSpan());
+		dbdog.setFriendlyScale(dog.getFriendlyScale());
+		dbdog.setHealthAndGrooming(dog.getHealthAndGrooming());
+		dbdog.setTrainabilityScale(dog.getTrainabilityScale());
+		dbdog.setExerciseNeedsScale(dog.getExerciseNeedsScale());
+		dbdog.setMoreInfo(dog.getMoreInfo());
+		em.getTransaction().commit();
+		em.close();
+		
+		return dbdog;
+	}
+
+	@Override
+	public boolean deleteDog(int id) {
+		boolean removedDog = false;
+		Dog d = em.find(Dog.class, id);
+		if(d !=null) {
+			em.getTransaction().begin();
+			em.remove(d);
+			removedDog = !em.contains(d);
+			em.getTransaction().commit();
+		}
+		em.close();
+		return removedDog;
+	}
+
+	
 
 }
