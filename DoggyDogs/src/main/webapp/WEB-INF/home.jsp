@@ -18,19 +18,19 @@
 		<input class="btn btn-primary" type="submit" value="Show Dog" />
 	</form>
 	<br>
-<a href="/dog/add.jsp"><p>Add a dog to the list.</p></a>
+<a href="addDog.do"><p>Add a dog to the list.</p></a>
     <!-- <form class="form" action="add.jsp" method="GET"> -->
 		<input class="btn btn-primary" type="submit" value="Add Dog" />
 	</form> 
 	<br>
 <p>Update dog info.</p>
-    <form class="form" action="update.jsp" method="GET">
-		Dog ID: <input type="text" name="id, dog" />
+    <form class="form" action="updateDogs.do" method="GET">
+		Dog ID: <input type="text" name="id" />
 		<input class="btn btn-primary" type="submit" value="Update Dog" />
 	</form>
 	<br>
 <p>Delete dog from list.</p>
-    <form class="form" action="delete.jsp" method="GET">
+    <form class="form" action="deleteDogs.do" method="GET">
 		Dog ID: <input type="text" name="id" />
 		<input class="btn btn-primary" type="submit" value="Delete Dog" />
 	</form>

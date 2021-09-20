@@ -32,18 +32,25 @@ public class DogController {
 		return "dog/add";
 		
 	}
-	@RequestMapping(path ="update.jsp")
-	public String updateDog(Integer id, Model model, Dog dog) {
-		
-		model.addAttribute("dogs", dao.updateDog(id, dog) );
-		return "dog/update";
-		
-	}
-	@RequestMapping(path ="delete.jsp")
+//	@RequestMapping(path ="update.do")
+//	public String updateDog(Integer id, Model model, Dog dog) {
+//		
+//		model.addAttribute("dogs", dao.updateDog(id, dog) );
+//		return "dog/update";
+//		
+//	}
+	@RequestMapping(path ="delete.do")
 	public String deleteDog(Integer id, Model model) {
 		
 		model.addAttribute("dogs", dao.deleteDog(id));
 		return "dog/delete";
+		
+	}
+	@RequestMapping(path ="updateDogs.do")
+	public String updateForm(Integer id, Model model) {
+		
+		model.addAttribute("dogs", dao.findById(id) );
+		return "dog/update";
 		
 	}
 	
